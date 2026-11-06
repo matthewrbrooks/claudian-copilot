@@ -15,7 +15,7 @@
 
 ![Preview](assets/Preview.png)
 
-An Obsidian plugin that embeds AI coding agents (Claude Code, Codex, Grok Build, Antigravity CLI, OpenCode, Pi, DeepSeek Harness, and more to come) in your vault. Your vault becomes the agent's working directory — file read/write, search, bash, and multi-step workflows all work out of the box.
+An Obsidian plugin that embeds AI coding agents (Claude Code, Codex, GitHub Copilot, Grok Build, Antigravity CLI, OpenCode, Pi, DeepSeek Harness, and more to come) in your vault. Your vault becomes the agent's working directory — file read/write, search, bash, and multi-step workflows all work out of the box.
 
 ## Features & Usage
 
@@ -49,6 +49,7 @@ Open Claudian interface from the ribbon icon or command palette. Everything work
   - [Antigravity CLI](https://antigravity.google/product/antigravity-cli)
   - [Claude Code](https://code.claude.com/docs/en/overview)
   - [Codex](https://github.com/openai/codex)
+  - [GitHub Copilot CLI](https://github.com/github/copilot-cli) (run `copilot login` first)
   - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
   - [Grok Build](https://github.com/xai-org/grok-build)
   - [OpenCode V2](https://github.com/anomalyco/opencode)
@@ -97,7 +98,8 @@ npm run build
 
 ## Privacy & Data Use
 
-- **Sent to API**: Your input, attached files, images, and tool call outputs. Depending on the selected provider, data is sent to Anthropic (Claude), OpenAI (Codex), xAI (Grok), Google (Antigravity), or the providers configured in OpenCode, Pi, or DeepSeek Harness. The destination can be configured through provider settings and environment variables.
+- **Sent to API**: Your input, attached files, images, and tool call outputs. Depending on the selected provider, data is sent to Anthropic (Claude), OpenAI (Codex), GitHub (Copilot), xAI (Grok), Google (Antigravity), or the providers configured in OpenCode, Pi, or DeepSeek Harness. The destination can be configured through provider settings and environment variables.
+- **GitHub Copilot environment**: The Copilot CLI can run shell commands, so Claudian passes it only an allowlist of your environment: `PATH`, `HOME`, user, shell, temp-dir, locale and terminal variables, proxy and SSL certificate variables, and anything starting with `COPILOT_`, `GH_`, `GITHUB_`, `LC_` or `XDG_`. Other secrets in Obsidian's environment (such as `AWS_*` or `OPENAI_API_KEY`) are not forwarded. Add any other variable you need in the Copilot provider's environment setting; those always pass through. Claudian never stores GitHub credentials; sign in with `copilot login`.
 - **No telemetry or unsolicited background activity**: Claudian does not run telemetry beacons. UI polling timers read local Obsidian/editor selection state only. Network activity is limited to explicit provider runtime work, configured MCP endpoints, a 127.0.0.1-only listener that OpenCode, DeepSeek and Grok sessions use for Claudian's session tools, provider SDK/CLI calls needed to answer your requests, and their configured services.
 
 ## Troubleshooting
@@ -122,6 +124,7 @@ src/
 │   ├── antigravity/             # Antigravity CLI ACP adaptor, transcript history, models
 │   ├── claude/                  # Claude Agent SDK adaptor, native history, plugins
 │   ├── codex/                   # Codex shared app-server adaptor, JSON-RPC, JSONL history
+│   ├── copilot/                 # GitHub Copilot CLI ACP adaptor (`copilot --acp`), models, restricted env
 │   ├── deepseek/                # DeepSeek Harness native Remote adaptor, presets, and history
 │   ├── grok/                    # Grok Build ACP adaptor, native history, models, and tools
 │   ├── opencode/                # OpenCode HTTP adaptor, shared server

@@ -784,6 +784,12 @@
         "desc": "僅傳遞給 Antigravity（agy）的環境變數，例如 GEMINI_API_KEY。"
       }
     },
+    "copilot": {
+      "environment": {
+        "name": "GitHub Copilot environment variables",
+        "desc": "Environment variables passed only to GitHub Copilot (copilot), such as COPILOT_PROVIDER_* for BYOK or GH_TOKEN."
+      }
+    },
     "deepseek": {
       "installation": {
         "desc": "自動模式優先使用 dsh，其次偵測 macOS 或 Windows 上的 Desktop。兩者都已安裝時，輸入 Desktop 的 .app 路徑或 Windows 安裝資料夾即可選擇它。請先開啟 Desktop 完成初始設定。",

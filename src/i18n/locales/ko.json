@@ -784,6 +784,12 @@
         "desc": "Antigravity(agy)에만 전달되는 환경 변수입니다(예: GEMINI_API_KEY)."
       }
     },
+    "copilot": {
+      "environment": {
+        "name": "GitHub Copilot environment variables",
+        "desc": "Environment variables passed only to GitHub Copilot (copilot), such as COPILOT_PROVIDER_* for BYOK or GH_TOKEN."
+      }
+    },
     "deepseek": {
       "installation": {
         "desc": "자동 감지는 dsh를 우선하고 다음으로 macOS 또는 Windows의 Desktop을 찾습니다. 둘 다 설치된 경우 Desktop의 .app 경로 또는 Windows 설치 폴더를 입력하면 선택할 수 있습니다. 먼저 Desktop을 열어 초기 설정을 완료하세요.",

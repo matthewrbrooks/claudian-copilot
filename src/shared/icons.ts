@@ -89,6 +89,11 @@ export const GROK_PROVIDER_ICON: ProviderIconSvg = {
   path: 'M3.25 3h4.18l4.8 6.64L17.88 3h3.17l-7.36 8.65L20.44 21h-4.18l-5.16-7.14L5.02 21H1.85l7.79-9.16L3.25 3Zm3.03 1.7 10.85 14.6h1.28L7.56 4.7H6.28Z',
 };
 
+export const COPILOT_PROVIDER_ICON: ProviderIconSvg = {
+  viewBox: '0 0 24 24',
+  path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-3 7.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm6 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 18c-2.2 0-4-1.3-4-2.5h8c0 1.2-1.8 2.5-4 2.5z',
+};
+
 /** Google's full-colour Antigravity mark; its ids are made unique per rendered copy. */
 export const ANTIGRAVITY_PROVIDER_ICON: ProviderIconSvg = {
   kind: 'composite',

@@ -784,6 +784,12 @@
         "desc": "Переменные окружения, передаваемые только Antigravity (agy), например GEMINI_API_KEY."
       }
     },
+    "copilot": {
+      "environment": {
+        "name": "GitHub Copilot environment variables",
+        "desc": "Environment variables passed only to GitHub Copilot (copilot), such as COPILOT_PROVIDER_* for BYOK or GH_TOKEN."
+      }
+    },
     "deepseek": {
       "installation": {
         "desc": "Автопоиск предпочитает dsh, затем ищет Desktop в macOS или Windows. Если установлены оба варианта, укажите путь к .app или папку установки в Windows для выбора Desktop. Сначала откройте Desktop и завершите настройку.",
