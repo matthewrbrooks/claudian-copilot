@@ -1,3 +1,9 @@
+/* Type scale: one design pixel at Obsidian's default 16px note text, so chat sizes follow the note font size.
+   Defined beside Obsidian's own body token so surfaces mounted on document.body resolve it too. */
+body {
+  --claudian-font-px: calc(var(--font-text-size) / 16);
+}
+
 /* Brand & semantic color tokens */
 .claudian-container,
 .claudian-settings,
@@ -22,7 +28,6 @@
   --claudian-brand-copilot: #8534F3;
   --claudian-brand-antigravity: #3186FF;
   --claudian-error: #dc3545;
-  --claudian-compact: #5bc0de;
 
   /* Shared side-chat accent. */
   --claudian-side-chat: #60a5fa;
