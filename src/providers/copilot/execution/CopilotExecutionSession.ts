@@ -22,7 +22,6 @@ import {
   type ACPSessionNotification,
   buildACPUsageInfo,
   mapACPApprovalDecision,
-  normalizeACPAvailableCommands,
 } from '@/providers/acp';
 
 import {
@@ -39,6 +38,7 @@ import {
 } from '../../../core/execution';
 import type { ProviderRuntimeHost } from '../../../core/providers/ProviderRuntimeHost';
 import type { ChatMessage, SlashCommand } from '../../../core/types';
+import { normalizeCopilotAvailableCommands } from '../commands/copilotCommandNormalization';
 import {
   type CopilotModel,
   decodeCopilotModelId,
@@ -422,7 +422,7 @@ export class CopilotExecutionSession implements ProviderExecutionSession {
 
   #handleNotification(owner: NativeOwner, notification: ACPSessionNotification): void {
     if (notification.update.sessionUpdate === 'available_commands_update') {
-      owner.commandsBySession.set(notification.sessionId, normalizeACPAvailableCommands(notification.update.availableCommands));
+      owner.commandsBySession.set(notification.sessionId, normalizeCopilotAvailableCommands(notification.update.availableCommands));
       if (notification.sessionId === this.providerSessionId) this.state.emit({ type: 'commands_changed' });
       return;
     }

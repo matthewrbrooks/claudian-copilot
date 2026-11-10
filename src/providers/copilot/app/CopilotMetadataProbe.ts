@@ -2,8 +2,9 @@ import { OwnedProbeRegistry } from '@/core/providers/metadata/OwnedProbeRegistry
 import { ProviderTransitionFence } from '@/core/providers/metadata/ProviderTransitionFence';
 import type { ProviderRuntimeHost } from '@/core/providers/ProviderRuntimeHost';
 import type { SlashCommand } from '@/core/types';
-import { type ACPSessionNotification, normalizeACPAvailableCommands } from '@/providers/acp';
+import type { ACPSessionNotification } from '@/providers/acp';
 
+import { normalizeCopilotAvailableCommands } from '../commands/copilotCommandNormalization';
 import { CopilotNativeConnection } from '../execution/CopilotNativeConnection';
 import { type CopilotModel, readCopilotSessionModels } from '../models';
 import { resolveCopilotLaunchSpec } from '../runtime/CopilotExecutionContext';
@@ -79,7 +80,7 @@ export class CopilotMetadataProbe {
         const pending: ACPSessionNotification[] = [];
         const accept = (notification: ACPSessionNotification) => {
           if (notification.update.sessionUpdate === 'available_commands_update' && notification.sessionId === sessionId) {
-            resolveCommands(normalizeACPAvailableCommands(notification.update.availableCommands));
+            resolveCommands(normalizeCopilotAvailableCommands(notification.update.availableCommands));
           }
         };
         const unsubscribe = native.onNotification(notification => {
